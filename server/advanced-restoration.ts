@@ -1,5 +1,7 @@
 import sharp from "sharp";
 import OpenAI from "openai";
+import * as path from "path";
+import * as fs from "fs";
 
 const openai = new OpenAI({ 
   apiKey: process.env.OPENAI_API_KEY || process.env.OPENAI_API_KEY_ENV_VAR || "default_key" 
@@ -47,9 +49,11 @@ export class AdvancedPhotoRestorationService {
       // Step 6: Final enhancement and optimization
       const finalImage = await this.finalEnhancement(processedImage, options);
       
-      // Save the enhanced image
-      const outputPath = imagePath.replace(/\.[^/.]+$/, "_professionally_restored.jpg");
-      await finalImage.jpeg({ quality: 98 }).toFile(outputPath);
+      // Save the enhanced image with unique filename to avoid conflicts
+      const timestamp = Date.now();
+      const originalName = path.basename(imagePath, path.extname(imagePath));
+      const outputPath = `uploads/enhanced_${timestamp}_${originalName}.jpg`;
+      await finalImage.jpeg({ quality: 95 }).toFile(outputPath);
       
       console.log('Advanced photo restoration completed successfully');
       return outputPath;

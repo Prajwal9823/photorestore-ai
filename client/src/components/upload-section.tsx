@@ -186,12 +186,12 @@ export default function UploadSection() {
                 <span>
                   {uploadState === 'uploading'
                     ? 'Uploading image...'
-                    : 'Applying AI restoration with intelligent colorization...'}
+                    : 'Colorizing and enhancing your photo...'}
                 </span>
               </div>
               {uploadState === 'processing' && (
                 <p className="text-xs text-gray-500 mt-2">
-                  AI analysis, intelligent colorization, damage repair, and enhancement in progress
+                  Analyzing image, applying colors, enhancing details, and improving quality
                 </p>
               )}
             </CardContent>

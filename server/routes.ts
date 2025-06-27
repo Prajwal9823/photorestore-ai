@@ -8,7 +8,7 @@ import OpenAI from "openai";
 import sharp from "sharp";
 import fs from "fs";
 import path from "path";
-import { advancedRestorationService } from "./advanced-restoration.js";
+import { photoColorizerService } from "./photo-colorizer.js";
 
 interface MulterRequest extends Request {
   file?: Express.Multer.File;
@@ -132,19 +132,18 @@ async function processImageAsync(photoId: number, originalPath: string) {
     const originalUrl = `http://localhost:5000/uploads/${path.basename(originalPath)}`;
     
     try {
-      // Use advanced AI restoration service with intelligent colorization
-      console.log(`Applying advanced AI restoration with intelligent colorization for photo ${photoId}`);
+      // Use reliable photo colorization service
+      console.log(`Applying intelligent colorization and enhancement for photo ${photoId}`);
       
-      const enhancedPath = await advancedRestorationService.restorePhoto(originalPath, {
+      const enhancedPath = await photoColorizerService.restoreAndColorize(originalPath, {
         enhanceContrast: true,
-        colorizeBlackWhite: true,
+        addWarmth: true,
         repairDamage: true,
-        enhanceFaces: true,
-        upscaleResolution: true,
-        targetScale: 2.5
+        upscaleImage: true,
+        targetScale: 2.0
       });
 
-      console.log(`Advanced AI restoration completed for photo ${photoId}`);
+      console.log(`Photo colorization and enhancement completed for photo ${photoId}`);
 
       // Update photo record with AI-enhanced result
       await storage.updatePhoto(photoId, {
