@@ -8,7 +8,7 @@ import OpenAI from "openai";
 import sharp from "sharp";
 import fs from "fs";
 import path from "path";
-import { aiRestorationService } from "./ai-restoration.js";
+import { advancedRestorationService } from "./advanced-restoration.js";
 
 interface MulterRequest extends Request {
   file?: Express.Multer.File;
@@ -132,30 +132,19 @@ async function processImageAsync(photoId: number, originalPath: string) {
     const originalUrl = `http://localhost:5000/uploads/${path.basename(originalPath)}`;
     
     try {
-      // Use professional AI restoration service with state-of-the-art models
-      console.log(`Applying Real-ESRGAN and CodeFormer AI models for photo ${photoId}`);
+      // Use advanced AI restoration service with intelligent colorization
+      console.log(`Applying advanced AI restoration with intelligent colorization for photo ${photoId}`);
       
-      const enhancedUrl = await aiRestorationService.restorePhoto(originalUrl, {
-        enhancementType: 'auto',
-        scale: 4,
-        fidelity: 0.8
+      const enhancedPath = await advancedRestorationService.restorePhoto(originalPath, {
+        enhanceContrast: true,
+        colorizeBlackWhite: true,
+        repairDamage: true,
+        enhanceFaces: true,
+        upscaleResolution: true,
+        targetScale: 2.5
       });
 
-      console.log(`AI restoration completed, downloading enhanced image for photo ${photoId}`);
-
-      // Download the enhanced image from Replicate
-      const response = await fetch(enhancedUrl);
-      if (!response.ok) {
-        throw new Error(`Failed to download enhanced image: ${response.statusText}`);
-      }
-      
-      const enhancedBuffer = await response.arrayBuffer();
-      const timestamp = Date.now();
-      const enhancedPath = `uploads/enhanced_${timestamp}_${photoId}.jpg`;
-      
-      // Save the professionally enhanced image
-      await fs.promises.writeFile(enhancedPath, Buffer.from(enhancedBuffer));
-      console.log(`Professional AI-enhanced image saved to ${enhancedPath}`);
+      console.log(`Advanced AI restoration completed for photo ${photoId}`);
 
       // Update photo record with AI-enhanced result
       await storage.updatePhoto(photoId, {
@@ -163,7 +152,7 @@ async function processImageAsync(photoId: number, originalPath: string) {
         status: "completed"
       });
 
-      console.log(`Photo ${photoId} professionally restored using AI models`);
+      console.log(`Photo ${photoId} professionally restored with accurate colorization`);
       
     } catch (aiError) {
       console.warn(`Professional AI restoration failed for photo ${photoId}, applying fallback enhancement:`, aiError);

@@ -22,7 +22,7 @@ export default function HeroSection() {
               with AI
             </h1>
             <p className="mt-6 text-xl text-gray-600 leading-relaxed">
-              Professional AI restoration using Real-ESRGAN, CodeFormer, and GFPGAN models. Transform damaged photos with state-of-the-art algorithms used by professionals. Completely free, no account required.
+              Advanced AI restoration with intelligent colorization and damage repair. Transform old photos with accurate color restoration, face enhancement, and professional-grade algorithms. Completely free, no account required.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <Button

@@ -4,20 +4,20 @@ import { Palette, Sparkles, ZoomIn, Clock, Shield, Smartphone } from "lucide-rea
 const features = [
   {
     icon: Palette,
-    title: "DeOldify Colorization",
-    description: "Professional colorization using DeOldify AI model, the same technology used by film studios and historians to bring historical photos to life.",
+    title: "Intelligent Colorization",
+    description: "AI-guided colorization with era-appropriate colors. Our system analyzes historical context and subject matter to apply accurate, natural colors to black and white photos.",
     color: "text-primary bg-primary/10"
   },
   {
     icon: Sparkles,
-    title: "CodeFormer Face Restoration",
-    description: "Professional face restoration using CodeFormer AI model. Repairs damaged faces, enhances facial features, and restores missing details with remarkable accuracy.",
+    title: "AI Damage Repair",
+    description: "Advanced damage detection and repair using intelligent algorithms. Automatically removes scratches, tears, stains, and artifacts while preserving original photo integrity.",
     color: "text-secondary bg-secondary/10"
   },
   {
     icon: ZoomIn,
-    title: "Real-ESRGAN Upscaling",
-    description: "Industry-leading Real-ESRGAN model enhances resolution up to 8x while preserving natural textures, facial features, and fine details with exceptional clarity.",
+    title: "Smart Resolution Enhancement",
+    description: "Advanced upscaling algorithms that increase image resolution up to 4x while preserving fine details, natural textures, and facial features with exceptional clarity.",
     color: "text-accent bg-accent/10"
   },
   {
@@ -45,9 +45,9 @@ export default function FeaturesSection() {
     <section id="features" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Professional AI Models</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Advanced AI Restoration</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            State-of-the-art AI models used by professionals and researchers worldwide, now available for free
+            Intelligent photo restoration with accurate colorization, damage repair, and enhancement algorithms
           </p>
         </div>
 
