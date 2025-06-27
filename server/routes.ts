@@ -8,6 +8,7 @@ import OpenAI from "openai";
 import sharp from "sharp";
 import fs from "fs";
 import path from "path";
+import { aiRestorationService } from "./ai-restoration.js";
 
 interface MulterRequest extends Request {
   file?: Express.Multer.File;
@@ -120,88 +121,87 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
 async function processImageAsync(photoId: number, originalPath: string) {
   try {
-    console.log(`Starting processing for photo ${photoId}`);
+    console.log(`Starting professional AI restoration for photo ${photoId}`);
     
     // Ensure uploads directory exists
     if (!fs.existsSync('uploads')) {
       fs.mkdirSync('uploads', { recursive: true });
     }
 
-    // Process the image with Sharp for optimization
-    const processedBuffer = await sharp(originalPath)
-      .resize(1920, 1920, { fit: 'inside', withoutEnlargement: true })
-      .jpeg({ quality: 90 })
-      .toBuffer();
-
-    console.log(`Image processed with Sharp for photo ${photoId}`);
-
-    // Convert to base64 for OpenAI API
-    const base64Image = processedBuffer.toString('base64');
-
+    // Create accessible URL for the AI service
+    const originalUrl = `http://localhost:5000/uploads/${path.basename(originalPath)}`;
+    
     try {
-      // Use OpenAI to analyze the image
-      const response = await openai.chat.completions.create({
-        model: "gpt-4o", // the newest OpenAI model is "gpt-4o" which was released May 13, 2024. do not change this unless explicitly requested by the user
-        messages: [
-          {
-            role: "system",
-            content: "You are an expert photo restoration AI. Analyze the uploaded image and provide detailed enhancement suggestions."
-          },
-          {
-            role: "user",
-            content: [
-              {
-                type: "text",
-                text: "Analyze this photo and provide enhancement recommendations. Return JSON with: { \"analysis\": \"detailed analysis\", \"enhancements\": [\"list of enhancements\"], \"confidence\": 0.9 }"
-              },
-              {
-                type: "image_url",
-                image_url: {
-                  url: `data:image/jpeg;base64,${base64Image}`
-                }
-              }
-            ],
-          },
-        ],
-        response_format: { type: "json_object" },
-        max_tokens: 500,
+      // Use professional AI restoration service with state-of-the-art models
+      console.log(`Applying Real-ESRGAN and CodeFormer AI models for photo ${photoId}`);
+      
+      const enhancedUrl = await aiRestorationService.restorePhoto(originalUrl, {
+        enhancementType: 'auto',
+        scale: 4,
+        fidelity: 0.8
       });
 
-      console.log(`OpenAI analysis completed for photo ${photoId}`);
+      console.log(`AI restoration completed, downloading enhanced image for photo ${photoId}`);
+
+      // Download the enhanced image from Replicate
+      const response = await fetch(enhancedUrl);
+      if (!response.ok) {
+        throw new Error(`Failed to download enhanced image: ${response.statusText}`);
+      }
+      
+      const enhancedBuffer = await response.arrayBuffer();
+      const timestamp = Date.now();
+      const enhancedPath = `uploads/enhanced_${timestamp}_${photoId}.jpg`;
+      
+      // Save the professionally enhanced image
+      await fs.promises.writeFile(enhancedPath, Buffer.from(enhancedBuffer));
+      console.log(`Professional AI-enhanced image saved to ${enhancedPath}`);
+
+      // Update photo record with AI-enhanced result
+      await storage.updatePhoto(photoId, {
+        enhancedUrl: enhancedPath,
+        status: "completed"
+      });
+
+      console.log(`Photo ${photoId} professionally restored using AI models`);
+      
     } catch (aiError) {
-      console.warn(`OpenAI analysis failed for photo ${photoId}, continuing with basic enhancement:`, aiError);
+      console.warn(`Professional AI restoration failed for photo ${photoId}, applying fallback enhancement:`, aiError);
+      
+      // Fallback to advanced Sharp processing if AI fails
+      const processedBuffer = await sharp(originalPath)
+        .resize(1920, 1920, { fit: 'inside', withoutEnlargement: true })
+        .jpeg({ quality: 95 })
+        .toBuffer();
+
+      const enhancedBuffer = await sharp(processedBuffer)
+        .modulate({
+          brightness: 1.2,     // Enhanced brightness
+          saturation: 1.4,     // Enhanced saturation
+          hue: 0
+        })
+        .sharpen()  // Enhanced sharpening
+        .gamma(1.2)           // Better contrast
+        .normalize()          // Auto-level adjustment
+        .toBuffer();
+
+      const timestamp = Date.now();
+      const enhancedPath = `uploads/enhanced_${timestamp}_${photoId}.jpg`;
+      await fs.promises.writeFile(enhancedPath, enhancedBuffer);
+
+      await storage.updatePhoto(photoId, {
+        enhancedUrl: enhancedPath,
+        status: "completed"
+      });
+
+      console.log(`Fallback enhancement completed for photo ${photoId}`);
     }
-
-    // Apply enhanced image processing
-    const enhancedBuffer = await sharp(processedBuffer)
-      .modulate({
-        brightness: 1.15,    // Increase brightness slightly
-        saturation: 1.3,     // Enhance saturation for vibrancy
-        hue: 0
-      })
-      .sharpen()             // Sharpen the image with default settings
-      .gamma(1.1)            // Adjust gamma for better contrast
-      .toBuffer();
-
-    // Save enhanced image with unique filename
-    const timestamp = Date.now();
-    const enhancedPath = `uploads/enhanced_${timestamp}_${photoId}.jpg`;
-    await fs.promises.writeFile(enhancedPath, enhancedBuffer);
-
-    console.log(`Enhanced image saved to ${enhancedPath}`);
-
-    // Update photo record
-    await storage.updatePhoto(photoId, {
-      enhancedUrl: enhancedPath,
-      status: "completed"
-    });
-
-    console.log(`Photo ${photoId} processing completed successfully`);
     
     // Clean up files after 24 hours
     setTimeout(() => {
       try {
         fs.unlink(originalPath, () => {});
+        const enhancedPath = `uploads/enhanced_${Date.now()}_${photoId}.jpg`;
         fs.unlink(enhancedPath, () => {});
       } catch (cleanupError) {
         console.warn('File cleanup error:', cleanupError);

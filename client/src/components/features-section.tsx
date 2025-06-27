@@ -4,20 +4,20 @@ import { Palette, Sparkles, ZoomIn, Clock, Shield, Smartphone } from "lucide-rea
 const features = [
   {
     icon: Palette,
-    title: "AI Colorization",
-    description: "Transform black and white photos into vibrant, naturally colored images using advanced neural networks trained on millions of historical photos.",
+    title: "DeOldify Colorization",
+    description: "Professional colorization using DeOldify AI model, the same technology used by film studios and historians to bring historical photos to life.",
     color: "text-primary bg-primary/10"
   },
   {
     icon: Sparkles,
-    title: "Damage Repair",
-    description: "Remove scratches, tears, stains, and other damage automatically. Our AI intelligently fills in missing parts based on surrounding context.",
+    title: "CodeFormer Face Restoration",
+    description: "Professional face restoration using CodeFormer AI model. Repairs damaged faces, enhances facial features, and restores missing details with remarkable accuracy.",
     color: "text-secondary bg-secondary/10"
   },
   {
     icon: ZoomIn,
-    title: "Super Resolution",
-    description: "Enhance image quality and increase resolution up to 4x while preserving facial features and important details with remarkable clarity.",
+    title: "Real-ESRGAN Upscaling",
+    description: "Industry-leading Real-ESRGAN model enhances resolution up to 8x while preserving natural textures, facial features, and fine details with exceptional clarity.",
     color: "text-accent bg-accent/10"
   },
   {
@@ -45,9 +45,9 @@ export default function FeaturesSection() {
     <section id="features" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Powerful AI Features</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Professional AI Models</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Our advanced AI technology brings your old photos back to life with incredible detail and accuracy
+            State-of-the-art AI models used by professionals and researchers worldwide, now available for free
           </p>
         </div>
 

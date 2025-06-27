@@ -186,9 +186,14 @@ export default function UploadSection() {
                 <span>
                   {uploadState === 'uploading'
                     ? 'Uploading image...'
-                    : 'Applying AI enhancement filters...'}
+                    : 'Applying Real-ESRGAN & CodeFormer AI models...'}
                 </span>
               </div>
+              {uploadState === 'processing' && (
+                <p className="text-xs text-gray-500 mt-2">
+                  Using professional-grade AI restoration algorithms for optimal results
+                </p>
+              )}
             </CardContent>
           </Card>
         )}

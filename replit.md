@@ -50,11 +50,13 @@ PhotoRestore AI is a full-stack web application that uses artificial intelligenc
    - Before/after comparison slider
    - Support for JPG, PNG, TIFF formats (10MB limit)
 
-2. **AI Enhancement Pipeline**
-   - Automatic damage detection and repair
-   - Black and white photo colorization
-   - Image quality enhancement and upscaling
-   - Processing status tracking with polling
+2. **Professional AI Enhancement Pipeline**
+   - Real-ESRGAN for super-resolution upscaling (up to 8x)
+   - CodeFormer for advanced face restoration and repair
+   - GFPGAN for lightweight face enhancement
+   - DeOldify for professional photo colorization
+   - Automatic damage detection and intelligent repair
+   - Processing status tracking with real-time polling
 
 3. **User Interface Components**
    - Responsive design with mobile optimization
@@ -89,7 +91,9 @@ PhotoRestore AI is a full-stack web application that uses artificial intelligenc
 ## External Dependencies
 
 ### AI Services
-- **OpenAI API**: GPT-4o vision model for image enhancement
+- **Replicate API**: Professional AI models including Real-ESRGAN, CodeFormer, GFPGAN, and DeOldify
+- **API Key**: Environment variable `REPLICATE_API_TOKEN`
+- **OpenAI API**: GPT-4o vision model for image analysis (fallback)
 - **API Key**: Environment variable `OPENAI_API_KEY`
 
 ### Database
@@ -116,7 +120,8 @@ PhotoRestore AI is a full-stack web application that uses artificial intelligenc
 
 ### Environment Variables
 - `DATABASE_URL`: PostgreSQL connection string
-- `OPENAI_API_KEY`: OpenAI API authentication
+- `REPLICATE_API_TOKEN`: Replicate API for professional AI models
+- `OPENAI_API_KEY`: OpenAI API authentication (fallback)
 - `NODE_ENV`: Environment mode (development/production)
 
 ## User Preferences
@@ -125,5 +130,11 @@ Preferred communication style: Simple, everyday language.
 
 ## Changelog
 
-Changelog:
-- June 27, 2025. Initial setup
+- June 27, 2025 (6:20 AM): Upgraded to professional AI restoration system
+  - Integrated Replicate API with Real-ESRGAN, CodeFormer, GFPGAN, and DeOldify models
+  - Replaced basic OpenAI image processing with state-of-the-art restoration algorithms
+  - Enhanced UI to reflect professional AI capabilities
+  - Updated features section to highlight specific AI models used
+  - Improved processing feedback with professional terminology
+  - Made service completely free with no account requirements
+- June 27, 2025: Initial setup

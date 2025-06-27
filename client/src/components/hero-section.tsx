@@ -22,7 +22,7 @@ export default function HeroSection() {
               with AI
             </h1>
             <p className="mt-6 text-xl text-gray-600 leading-relaxed">
-              Transform old, damaged, or faded photos into stunning, high-quality images using advanced AI technology. Completely free, no account required - just upload and enhance your precious memories instantly.
+              Professional AI restoration using Real-ESRGAN, CodeFormer, and GFPGAN models. Transform damaged photos with state-of-the-art algorithms used by professionals. Completely free, no account required.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <Button
