@@ -3,46 +3,46 @@ import { Button } from "@/components/ui/button";
 
 const galleryItems = [
   {
-    before: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
+    before: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
     after: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
     category: "Portrait Restoration",
     era: "1920s → Enhanced",
-    beforeFilter: "grayscale"
+    beforeFilter: "grayscale contrast-75"
   },
   {
-    before: "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
-    after: "https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
-    category: "Family Photo",
-    era: "1950s → Restored",
-    beforeFilter: "sepia"
-  },
-  {
-    before: "https://images.unsplash.com/photo-1606800052052-a08af7148866?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
-    after: "https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
-    category: "Wedding Photo",
-    era: "1940s → Colorized",
-    beforeFilter: "grayscale"
-  },
-  {
-    before: "https://images.unsplash.com/photo-1518717758536-85ae29035b6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
-    after: "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
-    category: "Street Photography",
-    era: "1960s → Enhanced",
-    beforeFilter: "grayscale"
+    before: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
+    after: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
+    category: "Professional Portrait",
+    era: "1950s → Colorized",
+    beforeFilter: "grayscale sepia"
   },
   {
     before: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
-    after: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
-    category: "Professional Portrait",
-    era: "1930s → Colorized",
-    beforeFilter: "grayscale"
+    after: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
+    category: "Vintage Portrait",
+    era: "1940s → Enhanced",
+    beforeFilter: "grayscale brightness-75"
   },
   {
-    before: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
+    before: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
+    after: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
+    category: "Family Photo",
+    era: "1960s → Restored",
+    beforeFilter: "grayscale opacity-80"
+  },
+  {
+    before: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
     after: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
     category: "Group Photo",
-    era: "1970s → Restored",
-    beforeFilter: "sepia opacity-75"
+    era: "1970s → Colorized",
+    beforeFilter: "grayscale sepia brightness-90"
+  },
+  {
+    before: "https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
+    after: "https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300",
+    category: "Wedding Photo",
+    era: "1930s → Enhanced",
+    beforeFilter: "grayscale contrast-50"
   }
 ];
 

@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Mail, Clock, Headphones, Twitter, Facebook, Instagram, Linkedin } from "lucide-react";
+import { Mail, Clock, Headphones, Github, Instagram, Linkedin } from "lucide-react";
 import { useMutation } from "@tanstack/react-query";
 import { submitContactForm, type ContactFormData } from "@/lib/api";
 import { useToast } from "@/hooks/use-toast";
@@ -166,31 +166,34 @@ export default function ContactForm() {
 
             <Card className="shadow-lg">
               <CardContent className="p-8">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Follow Us</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">Connect with Developer</h3>
                 <div className="flex space-x-4">
                   <a
-                    href="#"
-                    className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
+                    href="https://linkedin.com/in/prajwal-r-670916280"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-blue-600 hover:text-white transition-colors"
+                    title="LinkedIn Profile"
                   >
-                    <Twitter className="h-5 w-5" />
+                    <Linkedin className="h-5 w-5" />
                   </a>
                   <a
-                    href="#"
-                    className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
-                  >
-                    <Facebook className="h-5 w-5" />
-                  </a>
-                  <a
-                    href="#"
-                    className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
+                    href="https://www.instagram.com/prajwalramteke361?igsh=Njc3bGYyaXVreGpv"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-pink-600 hover:text-white transition-colors"
+                    title="Instagram Profile"
                   >
                     <Instagram className="h-5 w-5" />
                   </a>
                   <a
-                    href="#"
-                    className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
+                    href="https://github.com/Prajwal9823"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-800 hover:text-white transition-colors"
+                    title="GitHub Profile"
                   >
-                    <Linkedin className="h-5 w-5" />
+                    <Github className="h-5 w-5" />
                   </a>
                 </div>
               </CardContent>

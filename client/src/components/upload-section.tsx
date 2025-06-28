@@ -186,12 +186,12 @@ export default function UploadSection() {
                 <span>
                   {uploadState === 'uploading'
                     ? 'Uploading image...'
-                    : 'Colorizing and enhancing your photo...'}
+                    : 'Applying professional colorization and enhancement...'}
                 </span>
               </div>
               {uploadState === 'processing' && (
                 <p className="text-xs text-gray-500 mt-2">
-                  Analyzing image, applying colors, enhancing details, and improving quality
+                  Professional film-grade colorization, cinematic enhancement, and quality optimization
                 </p>
               )}
             </CardContent>

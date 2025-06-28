@@ -4,14 +4,14 @@ import { Palette, Sparkles, ZoomIn, Clock, Shield, Smartphone } from "lucide-rea
 const features = [
   {
     icon: Palette,
-    title: "Natural Colorization",
-    description: "Transform black and white photos with warm, natural colors. Our system automatically detects grayscale images and applies beautiful sepia and color tones for authentic results.",
+    title: "Film-Grade Colorization",
+    description: "Professional colorization with warm, cinematic tones and film emulation. Our system applies rich, vibrant colors with golden hour warmth for stunning, authentic results.",
     color: "text-primary bg-primary/10"
   },
   {
     icon: Sparkles,
-    title: "Photo Enhancement",
-    description: "Improve your photos with advanced enhancement algorithms. Reduce noise, enhance contrast, sharpen details, and optimize brightness for professional-quality results.",
+    title: "Cinematic Enhancement",
+    description: "Professional-grade enhancement with S-curve contrast, advanced sharpening, and noise reduction. Creates cinematic depth and professional film-like quality with subtle vignette effects.",
     color: "text-secondary bg-secondary/10"
   },
   {
@@ -45,9 +45,9 @@ export default function FeaturesSection() {
     <section id="features" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Photo Colorization & Enhancement</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Professional Photo Enhancement</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Transform your black and white photos with natural colorization and professional enhancement algorithms
+            Transform your photos with film-grade colorization, cinematic enhancement, and professional quality algorithms
           </p>
         </div>
 

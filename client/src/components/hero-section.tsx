@@ -22,7 +22,7 @@ export default function HeroSection() {
               with AI
             </h1>
             <p className="mt-6 text-xl text-gray-600 leading-relaxed">
-              Transform black and white photos into beautiful colorized images with our advanced photo enhancement system. Add natural, warm colors while improving clarity, contrast, and overall quality. Completely free, no account required.
+              Transform your photos with professional film-grade colorization and cinematic enhancement. Our advanced system applies natural warm colors, premium contrast, and professional sharpening for stunning results. Completely free, no account required.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <Button
