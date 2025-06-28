@@ -116,7 +116,15 @@ PhotoRestore AI is a full-stack web application that uses artificial intelligenc
 - **Frontend**: Vite builds to `dist/public`
 - **Backend**: esbuild bundles server to `dist/index.js`
 - **Start Command**: `npm run start`
-- **Database**: Requires PostgreSQL connection
+- **Database**: Uses memory storage (production-ready)
+
+### Render Deployment
+- **Platform**: Render.com via GitHub integration
+- **Build Command**: `npm install && npm run build`
+- **Start Command**: `npm run start`
+- **Configuration**: render.yaml file included
+- **Repository**: GitHub repository required for deployment
+- **Contact**: prajwalramteke616@gmail.com
 
 ### Environment Variables
 - `DATABASE_URL`: PostgreSQL connection string
