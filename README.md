@@ -35,7 +35,8 @@ npm install
 
 3. Start development server:
 ```bash
-npm run dev
+npm run build
+npm start
 ```
 
 4. Open your browser to `http://localhost:5000`
